@@ -21,12 +21,16 @@ export class HeaderComponentComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getCurrentUser();
+
     if (window.localStorage.getItem("TOKEN")) {
       this.isValidUser = true;
       this.login = false;
       return;
 
     }
+
+   
 
   }
 
@@ -50,5 +54,28 @@ export class HeaderComponentComponent implements OnInit {
   }
 
 
+  // -> decode jwt token -> get the field user_name -> set to variable currentUser
+  
+  getCurrentUser() {
+    try {
+      console.log("getCurrentUser");
+      let token = window.localStorage.getItem("TOKEN");
+      let base64Url = token?.split('.')[1];
+      let base64 = base64Url?.replace('-', '+').replace('_', '/');
+      let jsonPayload = decodeURIComponent(atob(base64 || ""));
+      let json = JSON.parse(jsonPayload);
+      let name = json.user_name;
+      //remove DEV-91HD:
+      name = name.replace("DEV-91HD:", "");
+      this.dto.name = name;
+      
+
+
+      
+      console.log(this.dto.name);
+    } catch (error) {
+      console.error("Error occurred while getting current user:", error);
+    }
+  }
 
 }
