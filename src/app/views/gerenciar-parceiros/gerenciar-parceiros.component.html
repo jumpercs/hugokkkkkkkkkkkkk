@@ -137,6 +137,23 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
+                                <input formControlName="username" type="text" class="form-control" id="username"
+                                    autocomplete="off">
+                                <label for="nome">Username</label>
+                                <div *ngIf="username.invalid && username.touched" class="validation
+                                    -error">
+                                    <p>*Username é um campo obrigatório.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
                                 <input formControlName="cnpj" type="text" class="form-control" id="cnpj"
                                     autocomplete="off" (input)="aplicarMascaraCNPJ($event)">
                                 <label for="nome">CNPJ</label>
