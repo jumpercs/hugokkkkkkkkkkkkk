@@ -43,7 +43,8 @@ export class GerenciarParceirosComponent implements OnInit {
       nomeFantasia: [null, [Validators.required, Validators.minLength(4)]],
       cnpj: [null, [Validators.required]],
       servico: [null, [Validators.required]],
-      descricaoParceiro: [null, [Validators.required, Validators.minLength(4)]]
+      descricaoParceiro: [null, [Validators.required, Validators.minLength(4)]],
+      username: [null, [Validators.required, Validators.minLength(4)]],
 
     });
 
@@ -52,7 +53,8 @@ export class GerenciarParceirosComponent implements OnInit {
       nomeFantasia: [null, [Validators.required]],
       cnpj: [null, [Validators.required]],
       servico: [null, [Validators.required]],
-      descricaoParceiro: [null, [Validators.required]]
+      descricaoParceiro: [null, [Validators.required]],
+      username: [null, [Validators.required, Validators.minLength(4)]],
 
     });
 
@@ -60,6 +62,8 @@ export class GerenciarParceirosComponent implements OnInit {
     this.getServices();
     this.selectServicos
   }
+
+
 
   get razaoSocial() {
     return this.formulario.get('razaoSocial')!;
@@ -79,6 +83,10 @@ export class GerenciarParceirosComponent implements OnInit {
 
   get descricaoParceiro() {
     return this.formulario.get('descricaoParceiro')!;
+  }
+
+  get username() {
+    return this.formulario.get('username')!;
   }
 
 
@@ -251,6 +259,28 @@ export class GerenciarParceirosComponent implements OnInit {
       }, error => {
         alert('Falha ao Cadastrar Parceiro!');
       });
+
+
+      let usernameFormated = this.formulario.controls['username'].value.replace(/ /g, ".").toLowerCase();
+      //remove special characters
+      usernameFormated = usernameFormated.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      //only allow letters, numbers and dots
+      usernameFormated = usernameFormated.replace(/[^a-zA-Z0-9.]/g, "");
+
+      let nomeFantasiaFormated = this.formulario.controls['nomeFantasia'].value.toLowerCase();
+
+      this._parceiros.createUser(usernameFormated, usernameFormated , 'teste@gmail.com', "@BCtech2024@").subscribe((response) => {
+        console.log(response);
+        alert('Usuário cadastrado com sucesso!');
+        alert("Usuário: " + usernameFormated + " Senha: @BCtech2024@");  
+
+
+      }
+      , error => {
+        console.log(error);
+      });
+
+
 
       this.formulario.reset()
     }
