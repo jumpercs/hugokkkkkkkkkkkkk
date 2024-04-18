@@ -54,7 +54,7 @@
 
                                 <hr>
 
-                                <a class="sub-menu-link" href="#gerenciar-servicos">
+                                <a class="sub-menu-link" href="#gerenciar-servicos"  *ngIf="isValidUser && dto.name == 'hug.admin'">
 
                                     <div class="icone">
                                         <i class='bx bx-edit'></i>
@@ -70,7 +70,7 @@
 
                                 </a>
 
-                                <a class="sub-menu-link" href=#gerenciar-parceiros>
+                                <a class="sub-menu-link" href=#gerenciar-parceiros  *ngIf="isValidUser && dto.name == 'hug.admin'">
 
                                     <div class="icone">
                                         <i class='bx bxs-user-detail'></i>

@@ -27,9 +27,50 @@ export class VisualizacaoDadosFormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.initAccordion();
-    this.getFormularios();
     this.getParceiros();
+    this.getCurrentUser();
+    this.getFormularios();
   }
+
+  currentUser: any = {
+    name: ""
+  };
+
+
+  showServicesFromAnotherUser(FormIndex: any, ServiceIndex: any ): boolean {
+    if (this.currentUser.name == "hug.admin") {
+      return true;
+    }
+    return this.currentUser.name != "hug.admin" && this.listForms[FormIndex].data.ctn_00005[ServiceIndex].slt_00002?.label == this.currentUser.name;
+
+    
+  }
+
+
+  getCurrentUser() {
+    try {
+      console.log("getCurrentUser");
+      let token = window.localStorage.getItem("TOKEN");
+      let base64Url = token?.split('.')[1];
+      let base64 = base64Url?.replace('-', '+').replace('_', '/');
+      let jsonPayload = decodeURIComponent(atob(base64 || ""));
+      let json = JSON.parse(jsonPayload);
+      let name = json.user_name;
+      //remove DEV-91HD:
+      name = name.replace("DEV-91HD:", "");
+      this.currentUser.name = name;
+      console.log("this.currentUser.name: ", this.currentUser.name);
+
+
+
+
+      console.log(this.currentUser.name);
+    } catch (error) {
+      console.error("Error occurred while getting current user:", error);
+    }
+  }
+
+
 
   gerarToken(): Observable<any> {
 
@@ -170,15 +211,50 @@ export class VisualizacaoDadosFormularioComponent implements OnInit {
     });
   }
 
-  getFormularios() {
 
-    this._service.getFormularios().subscribe((form: FormularioModel[]) => {
-      this.listForms = form.map(item => {
-        return {
-          ...item
-        };
-      });
-    })
+
+  
+
+  
+  
+
+  getFormularios() {
+   console.log("getFormularios currentUser: ", this.currentUser.name);
+    
+    if (this.currentUser.name !==  "hug.admin") {
+      console.warn("mudando currentUser.name para 'nome fantasia da abc technology'");
+      this.currentUser.name = "nome fantasia da abc technology";
+      this._service.getFormularios().subscribe((form: FormularioModel[]) => {
+
+        console.log(form);
+        console.log(this.currentUser.name)
+        let allForms = form.map(item => {
+          return {
+            ...item
+          };
+        }
+        );
+       
+
+        this.listForms = allForms.filter(form => form.data.ctn_00005.some(item => item.slt_00002 && item.slt_00002.label == this.currentUser.name))
+
+
+
+      })
+    } else {
+
+      console.log("é igual a hug.admin")
+
+      this._service.getFormularios().subscribe((form: FormularioModel[]) => {
+        this.listForms = form.map(item => {
+          return {
+            ...item
+          };
+        });
+      })
+    }
+
+
 
   }
 
@@ -206,19 +282,19 @@ export class VisualizacaoDadosFormularioComponent implements OnInit {
   }
 
   selectParceiro(parceiro: any) {
-    
+
     this.listForms[this.formIndex].data.ctn_00005[this.serviceIndex].slt_00002 = {
       "value": parceiro.id,
       "label": parceiro.data.ipt_00003
     }
 
-    
+
     this._form.putFormulario(this.listForms[this.formIndex]).subscribe((e: any) => {
       console.log(e);
     }, error => {
       console.log(error)
     })
- 
+
     this.formIndex = -1;
     this.serviceIndex = -1;
   }

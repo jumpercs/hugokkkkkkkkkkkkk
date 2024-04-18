@@ -209,5 +209,55 @@ export class ParceirosService {
     );
 
   }
+  
+  
 
-}
+  createUser(name: string, username: string, email: string, password: string): Observable<any[]> {
+      
+      return this.gerarToken().pipe(
+        switchMap((response) => {
+                    const token = response.body.access_token;
+            
+                    const headers = new HttpHeaders({
+                      'Accept': 'application/json, text/plain, */*',
+                      'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+                      'Authorization': `Bearer ${token}`,
+                      'Connection': 'keep-alive',
+                      'Content-Type': 'application/json',
+                      'Origin': 'http://app.chutzy.com',
+                      'Referer': 'http://app.chutzy.com/',
+                      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0'
+                    });
+
+
+                    const raw = JSON.stringify({
+                      "photo": "assets/images/user.png",
+                      "languageSelected": {
+                          "id": "61d715a41bbd50725ec4cc19",
+                          "deleted": false,
+                          "cko": null,
+                          "name": "Português/BR",
+                          "prefix": "pt-br",
+                          "flag": "flag-icon-br",
+                          "active": true
+                      },
+                      "name": `${name}`,
+                      "email": `${email}`,
+                      "username": `${username}`,
+                      "active": true,
+                      "encrypt": true,
+                      "confirmPassword": `${password}`,
+                      "password": `${password}`,
+                      "languageId": "61d715a41bbd50725ec4cc19",
+                      "type": "ADMIN",
+                      "profileId": null
+                  })
+
+                  return this._http.post<any>(`http://app.chutzy.com:8080/jarvis/api/core/users/`, raw, { headers });
+          }
+        )
+      )
+    }
+
+
+  }
