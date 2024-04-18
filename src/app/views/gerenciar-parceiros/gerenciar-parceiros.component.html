@@ -1,0 +1,276 @@
+<app-header-secondary></app-header-secondary>
+
+<div class="container" *ngIf="isContent">
+
+    <div class="title mt-3">
+        <h2>Gerenciar Parceiros</h2>
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-lg-6">
+            <div class="card p-2">
+
+                <div class="perfil">
+
+                    <div class="imagem">
+                        <img height="80" width="80" src="assets/icon-hugo.png" alt="iamgem de perfil">
+                    </div>
+
+                    <div class="descricao-perfil">
+                        <p>Bem-vindo, Hugo!</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card p-2">
+
+                <div class="qtd-formulario">
+                    <p>Quantidade de Parceiros</p>
+                    <p> {{qntParceiros}} </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row p-3" style="display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fullScreenModal">
+            Adicionar
+        </button>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Razão Social</th>
+                        <th scope="col">Nome Fantasia</th>
+                        <th scope="col">CNPJ</th>
+                        <th scope="col">Serviços</th>
+                        <th scope="col">Editar ou Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of allParceiros">
+                        <th> {{ item.codigo }} </th>
+                        <td> {{ item.razao }} </td>
+                        <td> {{ item.nomeFantasia }} </td>
+                        <td> {{ item.cnpj }} </td>
+                        <td> {{ item.servicos }} </td>
+                        <td>
+                            <button (click)="buscarEditar( item.id )" class="btn-edit bg-success" data-bs-toggle="modal"
+                                data-bs-target="#fullScreenModalUpdate"> <span> <i class='bx bx-pencil'></i> </span>
+                            </button>
+                            <button (click)="deletar( item.id )" class="btn-edit bg-danger"> <span> <i
+                                        class='bx bx-trash'></i> </span> </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container" *ngIf="isLoading">
+
+    <div class="spinner-content">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- modal adicionar -->
+<div class="modal fade" id="fullScreenModal" tabindex="-1" aria-labelledby="fullScreenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fullScreenModalLabel">Adicionar Parceiros</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetFormulario()"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="myForm" [formGroup]="formulario" (ngSubmit)="ngFormulario()">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
+                                <input formControlName="razaoSocial" type="text" class="form-control" id="razaoSocial"
+                                    autocomplete="off">
+                                <label for="nome">Razão Social</label>
+                                <div *ngIf="razaoSocial.invalid && razaoSocial.touched" class="validation-error">
+                                    <p>*O nome deve ter no mínimo 4 caracteres.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
+                                <input formControlName="nomeFantasia" type="text" class="form-control" id="nomeFantasia"
+                                    autocomplete="off">
+                                <label for="nome">Nome Fantasia</label>
+                                <div *ngIf="nomeFantasia.invalid && nomeFantasia.touched" class="validation-error">
+                                    <p>*O nome Fantasia deve ter no mínimo 4 caracteres.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
+                                <input formControlName="cnpj" type="text" class="form-control" id="cnpj"
+                                    autocomplete="off" (input)="aplicarMascaraCNPJ($event)">
+                                <label for="nome">CNPJ</label>
+                                <div *ngIf="cnpjField.invalid && cnpjField.touched" class="validation-error">
+                                    <p>*CNPJ é um campo obrigatório.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-12">
+                            <div class="form-floating col-lg-12">
+                                <p-multiSelect formControlName="servico" [options]="allServicos"
+                                    [(ngModel)]="selectServicos" optionLabel="servico" optionValue="servico"
+                                    [panelStyle]="{'width':'400px'}"></p-multiSelect>
+                                <div *ngIf="servico.invalid && servico.touched"
+                                    class="validation-error">
+                                    <p>*O Serviço é um campo obrigatório.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating">
+                                <textarea formControlName="descricaoParceiro" class="form-control"
+                                    id="descricaoParceiro" style="height: 100px" autocomplete="off"></textarea>
+                                <label for="floatingTextarea2">Descrição do Parceiro</label>
+                                <div *ngIf="descricaoParceiro.invalid && descricaoParceiro.touched"
+                                    class="validation-error">
+                                    <p>*A descrição do parceiro deve ter no mínimo 4 caracteres.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn">
+                                Confirmar
+                            </button>
+
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- modal atualizar  -->
+<div class="modal fade" id="fullScreenModalUpdate" tabindex="-1" aria-labelledby="fullScreenModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fullScreenModalLabel">Editar Parceiros</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="myForm" [formGroup]="formularioUpdate" (ngSubmit)="ngFormularioUpdate()">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
+                                <input formControlName="razaoSocial" type="text" class="form-control" id="razaoSocial"
+                                    autocomplete="off">
+                                <label for="nome">Razão Social</label>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
+                                <input formControlName="nomeFantasia" type="text" class="form-control" id="nomeFantasia"
+                                    autocomplete="off">
+                                <label for="nome">Nome Fantasia</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating mb-3">
+                                <input formControlName="cnpj" type="text" class="form-control" id="cnpj"
+                                    autocomplete="off" (input)="aplicarMascaraCNPJ($event)">
+                                <label for="nome" name="cnpj">CNPJ</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-12">
+                            <div class="form-floating">
+                                <p-multiSelect formControlName="servico" [options]="allServicos"
+                                    [(ngModel)]="selectServicos" optionLabel="servico" optionValue="servico"
+                                    [panelStyle]="{'width':'400px'}"></p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-floating">
+                                <textarea formControlName="descricaoParceiro" class="form-control"
+                                    id="floatingTextarea2" style="height: 100px" autocomplete="off"></textarea>
+                                <label for="floatingTextarea2">Descrição do Parceiro</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-12">
+
+                            <button type="submit" class="btn">
+                                Atualizar
+                            </button>
+
+                        </div>
+
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

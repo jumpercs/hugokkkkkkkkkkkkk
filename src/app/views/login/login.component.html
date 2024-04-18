@@ -1,0 +1,58 @@
+<app-header-secondary></app-header-secondary>
+
+    <div class="container mt-5" >
+
+        <div class="card">
+
+            <div class="row">
+
+                <div class="col-lg-6 p-5">
+
+                    <div class="card-form mt-2">
+
+                        <div class="login-title">
+                            <h2>Bem-vindo de volta!</h2>
+                            <p>Preencha com seus dados para efetuar o login:</p>
+                        </div>
+
+                        
+                        <form id="myForm" [formGroup]="formLogin" (ngSubmit)="ngFormLogin()">
+
+                            <div class="field-input">
+                                <span>Usuário</span>
+                                <input type="text" formControlName="usuario">
+                            </div>
+
+                            <div class="field-input mt-3">
+                                <span>Senha</span>
+                                <input type="password"  formControlName="senha" class="password" id="password">
+                            </div>
+
+                            <div class="show-password mt-3">
+                                <span id="showPassword" data-id="1" (click)="showPassword()">Exibir senha</span>
+                            </div>
+
+                            <div class="field-submit mt-3">
+                                <input type="submit" value="Entrar">
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="imagem">
+                        <img height="300" width="300" src="assets/login_banner.svg" alt="icone de login">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    

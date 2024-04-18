@@ -1,0 +1,123 @@
+<app-header-secondary></app-header-secondary>
+<div class="container">
+
+    <div class="title mt-4">
+        <h5>Preencha todos os campos obrigatórios e escolha os serviços desejados.</h5>
+    </div>
+
+    <form method="get" [formGroup]="formulario">
+        <div class="row form">
+            <div class="input mt-4 col-6">
+                <input type="text" name="name" placeholder="Nome" formControlName="name" required>
+                <div *ngIf="name.invalid && name.touched" class="validation-error">
+                    <p>O nome deve ter no mínimo 4 caracteres.</p>
+                </div>
+                <input type="text" name="email" placeholder="E-mail" formControlName="email" required>
+                <div *ngIf="email.invalid && email.touched" class="validation-error">
+                    <p>O e-mail é obrigatório.</p>
+                </div>
+            </div>
+            <div class="input mt-4 col-6">
+                <input type="text" name="cell" placeholder="Celular" formControlName="cell" required
+                    (input)="formatarTelefone($event)">
+
+                <div *ngIf="cell.invalid && cell.touched" class="validation-error">
+                    <p>O celular é obrigatório</p>
+                </div>
+
+                <input type="text" name="tel" placeholder="Telefone" formControlName="tel"
+                    (input)="formatarTelefone($event)">
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Selecione um Serviço</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- <input type="text" name="" id=""> -->
+
+                    <div class="modal-body" *ngFor="let item of services">
+                        <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"
+                            class="btnSelectService" (click)="selectedService = item">{{item.data.ipt_00002}} |
+                            {{item.data.slt_00001.label}}</button>
+                    </div>
+
+                    <!-- <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Próximo</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel2">Descrição</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Serviço: <label> {{selectedService?.data?.ipt_00002 }} </label> </p>
+                        <p>Segmento: <label> {{selectedService?.data?.slt_00001?.label}} </label></p>
+                        <textarea name="description" id="description" cols="56" rows="5" [(ngModel)]="descricaoServico"
+                            [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="button">
+                            <button class="btn-prev" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                                data-bs-dismiss="modal">Voltar</button>
+                            <button class="btn-next" data-bs-dismiss="modal" aria-label="Close"
+                                (click)="createService()">Enviar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-add">
+            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Adicionar
+                Serviços</a>
+        </div>
+
+        <div class="contet-service mt-3" *ngFor="let form of listServices">
+            <div class="row">
+                <div class="col-3">
+                    <p class="title">Segmento</p>
+                    <p>{{form.segmento_value}}</p>
+                </div>
+
+                <div class="col-3">
+                    <p class="title">Serviço</p>
+                    <p>{{form.servico_label}}</p>
+                </div>
+
+                <div class="col-4">
+                    <p class="title">Descrição</p>
+                    <p>{{form.descricao}}</p>
+                </div>
+
+                <div class="col-2 btn-edit-delete">
+                    <!-- <button class="edit"><i class="fa-regular fa-pen-to-square"></i></button> -->
+                    <button (click)="remove(form)" class="delete"><i class="fa-solid fa-trash">
+
+                        </i></button>
+                </div>
+            </div>
+            <input type="file" (change)="sendFile($event, form)" accept=".pdf">
+        </div>
+        <div class="button">
+            <button class="btn-prev" (click)="btnBack()">Voltar</button>
+
+            <button class="btn-next" (click)="sendForm()" type="submit">Enviar</button>
+
+        </div>
+    </form>
+
+
+
+</div>

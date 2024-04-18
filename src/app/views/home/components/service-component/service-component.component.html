@@ -1,0 +1,43 @@
+<section id="service">
+    <div class="container">
+        <div class="title mt-5">
+            <h3>Serviços</h3>
+            <p style="text-align: center;">Clique no serviço abaixo para mais informações.</p>
+        </div>
+
+        <div class="loader-wrapper" *ngIf="loading">
+            <div class="loader">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <div class="bar4"></div>
+                <div class="bar5"></div>
+                <div class="bar6"></div>
+                <div class="bar7"></div>
+                <div class="bar8"></div>
+                <div class="bar9"></div>
+                <div class="bar10"></div>
+                <div class="bar11"></div>
+                <div class="bar12"></div>
+            </div>
+        </div>
+        <div class="row services">
+            <div class="card-all-services col-4" *ngFor="let service of allServices; let i = index"
+                routerLink="/service-form">
+                <div *ngIf="showAll || i < 6">
+                    <div class="card-service">
+                        <img src="{{service.icon}}">
+                        <p class="subtitle">
+                            <strong>{{service.title}}</strong>
+                        </p>
+                        <p>{{service.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-show" style="display: flex; align-content: center; justify-content: center;">
+                <button *ngIf="!showAll" (click)="showMoreItems()" class="btn-show-more">Ver mais</button>
+                <button *ngIf="showAll" (click)="showFewerItems()" class="btn-show-more">Ver menos</button>
+            </div>
+        </div>
+    </div>
+</section>

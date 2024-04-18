@@ -1,0 +1,283 @@
+:root {
+    --bg: #ffffff;
+    --color-primary: #062A50;
+    --color-text: #7F858D;
+    --bg-line: #DEE0E4;
+    // --bg-card: #fafafa;
+    --bg-card: #ffffff;
+}
+
+.container .card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100px;
+    width: 100%;
+    border-left: 3px solid var(--color-primary);
+    background: var(--bg-card);
+}
+
+.row .card .perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-left: 12px;
+}
+
+.row .card .perfil .descricao-perfil {
+    line-height: 10px;
+}
+
+.row .card .perfil .descricao-perfil p {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.row .card .perfil .descricao-perfil span {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    color: var(--color-text);
+}
+
+.row .card .perfil .descricao-perfil span i {
+    margin-top: 5px;
+    color: var(--color-primary);
+    font-size: 14pt;
+}
+
+.container .card .qtd-formulario {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 1rem 1rem;
+    line-height: 10px;
+    font-weight: bold;
+    color: var(--color-primary);
+
+}
+
+.container .card .qtd-formulario p:nth-of-type(2) {
+    margin-top: 5px;
+    color: var(--color-primary);
+    font-size: 20pt;
+    font-weight: 500;
+}
+
+.container .content-filter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container .content-filter span {
+    font-weight: bolder;
+}
+
+.container .content-filter select {
+    height: auto;
+    width: 20%;
+}
+
+.row .title {
+    display: flex;
+    gap: 5px;
+
+    span {
+        font-weight: 600;
+        color: var(--color-primary);
+    }
+
+    i {
+        color: var(--color-primary);
+        font-size: 20pt;
+    }
+}
+
+.accordion .accordion-content header .drop-down {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3rem;
+    gap: 10px;
+}
+
+.accordion .accordion-content header .drop-down i {
+    cursor: pointer;
+    font-size: 17pt;
+    margin-top: 6px;
+}
+
+.accordion .accordion-content header p:nth-of-type(1) {
+    margin-top: 1rem;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.row .card-resultado p:nth-of-type(2) {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.accordion .accordion-content .card-andamento {
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+    margin-top: 1rem;
+    height: 0px;
+    width: 100%;
+    border-top: 1px solid var(--bg-line);
+}
+
+.accordion .accordion-content .servico {
+    margin-top: 2rem;
+    display: flex;
+}
+
+.accordion .accordion-content .servico {
+    line-height: 10px;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 12pt;
+
+}
+
+.accordion .accordion-content .servico p:nth-of-type(1) {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.accordion .accordion-content .detalhes {
+    margin-top: 2rem;
+    display: flex;
+    gap: 10px;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 12pt;
+}
+
+.accordion .accordion-content .detalhes p:nth-of-type(2) {
+    color: var(--color-text);
+}
+
+.accordion .accordion-content .steps {
+    margin-top: 1rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    gap: 5rem;
+}
+
+.accordion .accordion-content .steps .icon-status {
+    display: flex;
+    height: auto;
+    width: auto;
+    flex-direction: column;
+    font-size: 12pt;
+}
+
+.accordion .accordion-content .steps .icon-status span:nth-of-type(2) {
+    font-size: 12pt;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.accordion {
+    max-width: 100%;
+    width: 100%;
+    background: var(--bg-card);
+    margin-top: 1rem;
+}
+
+// .accordion .content-status {
+//     height: auto;
+//     width: 150px;
+// }
+
+.accordion .accordion-content {
+    border-left: 2px solid var(--color-primary);
+    margin: 10px 0;
+    border-radius: 4px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.11);
+    background: var(--bg-card);
+    overflow: hidden;
+}
+
+.accordion-content header {
+    display: flex;
+    min-height: 50px;
+    padding: 0 20px;
+    // cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion .title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.accordion header i {
+    font-size: 15px;
+    color: #333;
+}
+
+.accordion-content .description {
+    height: auto;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 12px;
+    color: #333;
+    font-weight: 400;
+    transition: all 0.2s linear;
+    border-top: 1px solid var(--bg-line);
+}
+
+.row nav ul li {
+    outline: none;
+}
+
+.row nav ul li a {
+    color: var(--color-primary);
+}
+
+.row nav ul li a:hover {
+    color: var(--color-primary);
+}
+
+.description .btn-parceiros {
+    padding: 5px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: var(--color-primary);
+    -webkit-text-stroke-width: 0.2px;
+    border: none;
+    outline: none;
+}
+
+.description button {
+    background-color: none;
+    outline: none;
+}
+
+.modal-body li {
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.btn-filter-parceiros {
+    margin: 2px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-filter-parceiros:hover {
+    background-color: transparent;
+    color: var(--details); 
+}

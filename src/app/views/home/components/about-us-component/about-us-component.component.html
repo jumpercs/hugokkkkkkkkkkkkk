@@ -1,0 +1,42 @@
+<section id="about-us">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="content-img  d-none d-md-block">
+                    <div class="shape">
+                        <img src="assets/shape-about-us.png" alt="forma">
+                    </div>
+                    <div class="photo">
+                        <img src="assets/hugo-correa.png" alt="foto do hugo correa">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 content-text p-4">
+                <h3>Quem Somos?</h3>
+                <p>
+                    Somos apaixonados por transformar visões em realidade. Com mais de 15 anos de experiência, a H7Px é
+                    especialista em soluções empresariais.
+                </p>
+                <p>
+                    De treinamentos a consultoria financeira, oferecemos um leque completo de serviços para atender às
+                    diversas necessidades do seu negócio.
+                </p>
+                <p>
+                    Nosso propósito vai além de serviços, estamos aqui para construir parcerias duradouras e apoiar a
+                    jornada de crescimento do seu negócio.
+                </p>
+
+                <div class="icons-about" *ngFor="let item of icons_about">
+                    <div class="showAll"></div>
+                    <img src="{{item.image}}">
+                    <div class="about">
+                        <p><strong>{{item.title}}</strong><br>
+                            {{item.descriptions}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

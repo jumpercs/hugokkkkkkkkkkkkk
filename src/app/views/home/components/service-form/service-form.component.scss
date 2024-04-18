@@ -1,0 +1,145 @@
+.input input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 4.5px;
+    border: none;
+    border-left: solid var(--bg-blue) 3px;
+    border-radius: 2px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// .form {
+//     background-color: ;
+// }
+
+.contet-service {
+    background-color: #fff;
+    padding: 0.8rem;
+    border-left: solid var(--bg-blue) 3px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    padding: 6px 4px;
+    color: #fff;
+    background-color: var(--bg-blue);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    width: 9.5rem;
+    display: block;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+        background-color: var(--details);
+        border-color: none;
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.button-add {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.title {
+    font-weight: bold;
+    color: var(--bg-blue);
+}
+
+.btn-prev {
+    color: var(--bg-blue);
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    width: 9.5rem;
+    display: block;
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
+    font-weight: bold;
+    border: solid var(--bg-blue) 2px;
+
+    &:hover {
+        background-color: var(--details);
+        border: solid var(--details) 2px;
+        color: #fff;
+    }
+}
+
+
+.btn,
+.btn-next {
+    padding: 6px 4px;
+    color: #fff;
+    background-color: var(--bg-blue);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    width: 9.5rem;
+    display: block;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+        background-color: var(--details);
+        border-color: none;
+    }
+}
+
+.edit {
+    background-color: var(--bg-blue);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.delete {
+    background-color: #BD0000;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.btn-edit-delete {
+    display: flex;
+    justify-content: flex-end;
+    height: 50%;
+}
+
+
+.btnSelectService {
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+        color: var(--details);
+        -webkit-text-stroke:  0.2pt;
+    }
+}
+
+.hovered {
+    color: var(--details);
+    -webkit-text-stroke:  0.2pt;
+}
+
+.validation-error {
+    display: block;
+    color: #BD0000;
+
+}

@@ -1,0 +1,154 @@
+.container .card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100px;
+    width: 100%;
+    border-left: 3px solid var(--color-primary);
+    background: var(--bg-card);
+}
+
+.row .card .perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-left: 12px;
+}
+
+.row .card .perfil .descricao-perfil {
+    line-height: 10px;
+}
+
+.row .card .perfil .descricao-perfil p {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.row .card .perfil .descricao-perfil span {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    color: var(--color-text);
+}
+
+.row .card .perfil .descricao-perfil span i {
+    margin-top: 5px;
+    color: var(--color-primary);
+    font-size: 14pt;
+}
+
+.container .card .qtd-formulario {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 1rem 1rem;
+    line-height: 10px;
+    font-weight: bold;
+    color: var(--color-primary);
+
+}
+
+.container .card .qtd-formulario p:nth-of-type(2) {
+    margin-top: 5px;
+    color: var(--color-primary);
+    font-size: 20pt;
+    font-weight: 500;
+}
+
+.row .btn {
+    background: var(--bg-blue);
+    color: var(--color-white);
+    height: auto;
+    width: 200px;
+}
+
+.btn-file {
+    border: none;
+    display: flex;
+    padding: 0.75rem 1.5rem;
+    background-color: #488aec;
+    color: #ffffff;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    height: auto;
+    width: 50%;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    user-select: none;
+    gap: 0.75rem;
+    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+    transition: all .6s ease;
+}
+
+.btn-file:hover {
+    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+}
+
+.btn-file:focus,
+.btn-file:active {
+    opacity: .85;
+    box-shadow: none;
+}
+
+.btn-file svg {
+    height: 1.25rem;
+}
+
+.table tbody td {
+    height: auto;
+    width: auto;
+}
+
+.table thead th {
+    color: var(--color-primary);
+}
+
+.table tbody .btn-edit {
+    border: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+    outline: none;
+    padding: 0.20rem;
+    margin-right: 10px;
+}
+
+.table tbody .btn-edit:nth-of-type(1) {
+    color: var(--color-white);
+}
+
+.table tbody .btn-edit:nth-of-type(2) {
+    color: var(--color-white);
+}
+
+.spinner-content {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .spinner-border {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+.multi-select {
+    background-color: #488aec;
+}
+
+.validation-error {
+    display: block;
+    color: #BD0000;
+    font-size: 0.9rem;
+    -webkit-text-stroke: 0.2px;
+}

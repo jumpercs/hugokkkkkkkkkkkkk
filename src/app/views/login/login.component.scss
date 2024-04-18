@@ -1,0 +1,121 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.container .card {
+    height: auto;
+    width: 100%;
+    background: var(--color-white);
+}
+
+.card .imagem {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-banner);
+}
+
+.card-form .login-title p {
+    color: var(--color-font);
+}
+
+.card-form .login-title h2 {
+    font-weight: bold;
+}
+
+#myForm .field-input {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-direction: column;
+}
+
+#myForm .show-password {
+    height: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 10pt;
+    text-transform: uppercase;
+}
+
+#myForm .show-password span:hover {
+    cursor: pointer;
+}
+
+#myForm .field-input span {
+    font-size: 10pt;
+    font-weight: bold;
+    color: var(--color-font);
+}
+
+#myForm .field-input input {
+    border: 1px solid var(--bg-border);
+    outline: none;
+    height: auto;
+    width: 300px;
+    padding: 0.30rem;
+    font-size: 11pt;
+}
+
+#myForm .field-submit input {
+    height: auto;
+    width: 300px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.50rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#myForm .field-submit input:hover {
+    background: #093463;
+}
+
+@media screen and (max-width: 991px) {
+
+    html,
+    body {
+        height: auto;
+        width: 100%;
+    }
+
+    .card {
+        margin-top: 1rem;
+    }
+
+    #myForm .field-input input {
+        width: 100%;
+    }
+
+    #myForm .field-submit input {
+        width: 100%;
+    }
+
+    #myForm .show-password {
+        width: 100%;
+    }
+
+    .card .imagem {
+        width: 100%;
+    }
+
+    .card .imagem img {
+        height: 60%;
+        width: 60%;
+    }
+
+}

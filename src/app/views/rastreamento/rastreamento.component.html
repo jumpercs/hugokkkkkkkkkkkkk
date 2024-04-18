@@ -1,0 +1,109 @@
+<app-header-secondary></app-header-secondary>
+
+<div class="container mt-3">
+
+    <div class="title">
+        <h1>Rastreamento</h1>
+
+        <div class="description mt-3">
+            <p>Insira o seu e-mail para visualizar todos os formulários enviados. <br> Estamos aqui para tornar sua
+                experiência conosco o mais tranquila possível.</p>
+        </div>
+
+    </div>
+
+    <div class="card-search">
+
+        <form id="myForm" style="width: 100%;" [formGroup]="formulario" (ngSubmit)="ngFormulario()">
+            <div class="content-search">
+
+                <div class="identificador">
+                    <p>E-mail de Rastreamento</p>
+                </div>
+
+                <input formControlName="codigo" type="text" name="text" class="input" id="input" autocomplete="off">
+
+                <button type="submit">
+                    <span><i class='bx bx-search'></i></span>
+                    <span> Pesquisar </span>
+                </button>
+
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="card-rastreio mt-5">
+        <div class="card mb-3 p-4" *ngFor="let item of dados">
+
+            <h5 class="title">{{item.codigo}}</h5>
+
+            <div class="rastreio-status">
+                <div class="bol"></div>
+                <div>{{item.status}}</div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-2">
+                    <img src="../../../assets/logo-h7px.png" height="60" width="90" alt="logo-da-empresa">
+                </div>
+                <div class="col-lg-10">
+                    <p>
+                        Código de Rastreamento <br>
+                        <b>{{item.codigo}}</b>
+
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="dataAtualizacao mt-4">
+                <p>Última atualização em {{item.dataAtualizacao}}</p>
+            </div>
+
+            <div class="servicos">
+                <div class="title">
+                    <h4 style="font-weight: 600;">Serviços</h4>
+                </div>
+
+                <div *ngFor="let service of item.servicos" class="content-service mt-2">
+                    <hr>
+                    <h5 style="font-weight: 600;">{{ service.nomeServico }}</h5>
+
+                    <div class="content-description">
+                        <strong>Descrição: </strong> {{ service.descricaoServico }}
+                    </div>
+
+                    <div class="content-status">
+                        <strong>Status: </strong> {{ service.statusServicos }}
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="loading mt-5" *ngIf="loading">
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+            <div class="bar6"></div>
+            <div class="bar7"></div>
+            <div class="bar8"></div>
+            <div class="bar9"></div>
+            <div class="bar10"></div>
+            <div class="bar11"></div>
+            <div class="bar12"></div>
+        </div>
+
+        <span>Rastreando...</span>
+
+    </div>
+
+</div>

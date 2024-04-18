@@ -1,0 +1,127 @@
+.contact {
+    h3 {
+        color: var(--details);
+        -webkit-text-stroke: 0.8px;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.contact-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+
+    .icon-contact {
+        display: flex;
+        margin-bottom: 10px;
+        margin-right: 15px;
+    }
+}
+
+.day {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+}
+
+
+form input,
+textarea,
+select,
+label {
+    margin-bottom: 10px;
+    width: 92%;
+    border: none;
+    background-color: #E2E2E2;
+    padding: 4px 6px;
+    border-radius: 3px;
+}
+
+
+form button {
+    padding: 6px 7px;
+    color: #fff;
+    background-color: var(--bg-blue);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    width: 6rem;
+
+    &:hover {
+        background-color: var(--details);
+        border-color: none;
+    }
+}
+
+.map-box {
+    width: 100%;
+    height: 270px;
+    position: relative;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .contact-content p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    .contact-content img {
+        font-size: 0.95rem;
+        text-align: left;
+        width: 22px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .contato {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .form {
+        text-align: center;
+    }
+
+    #large-devices-form {
+        display: none;
+    }
+
+    #small-devices-form {
+        display: block;
+    }
+}
+
+@media (min-width: 600px) {
+    #large-devices-form {
+        display: block;
+    }
+
+    #small-devices-form {
+        display: none;
+    }
+}
+
+.validation-error {
+    display: block;
+    color: #BD0000;
+    font-size: 0.9rem;
+    -webkit-text-stroke: 0.2px;
+}

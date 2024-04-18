@@ -1,0 +1,87 @@
+<section id="contact">
+    <div class="container contact">
+        <h3>Contate-nos</h3>
+        <p>Ficamos à disposição para esclarecer qualquer dúvida. Sinta-se à vontade para entrar em contato conosco.</p>
+        <div class="row mt-5">
+            <div class="col-6 contato p-4">
+                <div class="contact-content mb-2" *ngFor="let item of contact">
+                    <div class="icon-contact">
+                        <img src="{{item.icon}}">
+                    </div>
+                    <p><strong>{{item.title}}</strong> {{item.description}}</p>
+                </div>
+                <div class="contact-content mb-2">
+                    <div class="icon-contact">
+                        <img src="assets/clock.png">
+                    </div>
+                    <div class="day">
+                        <p><strong>Horário de Atendimento</strong></p>
+
+                        <p>Seg - Sex - 08h00 às 17h00</p>
+                        <p>Sáb e Dom - Fechado</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form col-6" id="large-devices-form" [formGroup]="formulario">
+                <form action="" method="get" [formGroup]="formulario">
+                    <input type="text" name="name" placeholder="Nome" formControlName="name" required><br>
+                    <div *ngIf="name.invalid && name.touched" class="validation-error">
+                        <p>*O nome deve ter no mínimo 4 caracteres.</p>
+                    </div>
+                    <input type="email" name="email" placeholder="E-mail" formControlName="email" required><br>
+                    <div *ngIf="email.invalid && email.touched" class="validation-error">
+                        <p>*O e-mail é obrigatório.</p>
+                    </div>
+                    <input type="text" name="phone" placeholder="Telefone" formControlName="phone" required
+                        (input)="formatarTelefone($event)"><br>
+                    <input type="text" name="celular" placeholder="Celular" formControlName="cell" required
+                        (input)="formatarTelefone($event)">
+                    <div *ngIf="cell.invalid && cell.touched" class="validation-error">
+                        <p>*O celular é obrigatório</p>
+                    </div>
+                    <textarea name="message" id="message" cols="30" rows="5" placeholder="Mensagem"
+                        formControlName="message" required></textarea>
+                    <div *ngIf="message.invalid && message.touched" class="validation-error">
+                        <p>*A Mensagem é obrigatória</p>
+                    </div>
+                    <button type="submit" (click)="onSubmit()">Enviar</button>
+                </form>
+            </div>
+
+            <div class="form col-12" id="small-devices-form" [formGroup]="formulario">
+                <form action="" method="get" [formGroup]="formulario">
+                    <input type="text" name="name" placeholder="Nome" formControlName="name" required><br>
+                    <div *ngIf="name.invalid && name.touched" class="validation-error">
+                        <p>*O nome deve ter no mínimo 4 caracteres.</p>
+                    </div>
+                    <input type="email" name="email" placeholder="E-mail" formControlName="email" required><br>
+                    <div *ngIf="email.invalid && email.touched" class="validation-error">
+                        <p>*O e-mail é obrigatório.</p>
+                    </div>
+                    <input type="text" name="telefone" placeholder="Telefone" formControlName="phone" required
+                        (input)="formatarTelefone($event)"><br>
+                    <input type="text" name="celular" placeholder="Celular" formControlName="cell" required
+                        (input)="formatarTelefone($event)">
+                    <div *ngIf="cell.invalid && cell.touched" class="validation-error">
+                        <p>*O celular é obrigatório</p>
+                    </div>
+                    <textarea name="message" id="message" cols="30" rows="5" placeholder="Mensagem"
+                        formControlName="message" required></textarea>
+                    <div *ngIf="message.invalid && message.touched" class="validation-error">
+                        <p>*A Mensagem é obrigatória</p>
+                    </div>
+                    <button type="submit" (click)="onSubmit()">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="map-box mt-5">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.9677595187254!2d-47.799553625720506!3d-21.193439678890908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b9bf25b5a26445%3A0x7534b3230d919c29!2sR.%20dos%20Catetos%2C%20170%20-%2013g%20-%20Ribeir%C3%A2nia%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014096-010!5e0!3m2!1spt-BR!2sbr!4v1708453513015!5m2!1spt-BR!2sbr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>

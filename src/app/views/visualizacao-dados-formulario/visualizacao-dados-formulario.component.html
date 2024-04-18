@@ -1,0 +1,185 @@
+<app-header-secondary></app-header-secondary>
+
+<div class="container">
+
+    <div class="title mt-3">
+        <h2>Visualizar Formulários</h2>
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-lg-6">
+            <div class="card p-2">
+
+                <div class="perfil">
+
+                    <div class="imagem">
+                        <img height="80" width="80" src="assets/icon-hugo.png" alt="imagem de perfil">
+                    </div>
+
+                    <div class="descricao-perfil">
+                        <p>Bem-vindo, Hugo!</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card p-2">
+
+                <div class="qtd-formulario">
+                    <p>Quantidade de Formulários</p>
+                    <p>{{listForms.length}}</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+        <div class="title">
+            <i class='bx bx-list-ul'></i>
+            <span> Meus Formulários </span>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-content" *ngFor="let form of listForms; let formIndex = index">
+
+            <header>
+
+                <div class="">
+
+                    <p>Código</p>
+
+                    <p>{{form.code}}</p>
+
+                </div>
+
+                <div class="">
+
+                    <p>Nome</p>
+                    <p>{{form.data.ipt_00002}}</p>
+
+                </div>
+
+                <div class="">
+
+                    <p>E-mail</p>
+
+                    <p>{{form.data.ipt_00003}}</p>
+
+                </div>
+
+                <div class="">
+
+                    <p>Celular</p>
+
+                    <p>{{form.data.ipt_00004}}</p>
+
+                </div>
+
+                <div class="">
+
+                    <p>Telefone</p>
+
+                    <p>{{form.data.ipt_00004}}</p>
+
+                </div>
+
+                <div class="">
+
+                    <p>Data</p>
+
+                    <p>{{ form.created | date:'HH:mm dd/MM/yyyy' }}</p>
+
+                </div>
+
+                <div class="drop-down" (click)="initAccordion()">
+
+                    <span>Detalhes do Formulário</span>
+                    <span> <i class='bx bx-chevron-down'></i> </span>
+                </div>
+
+            </header>
+
+            <div class="description">
+                <div class="row" *ngFor="let servicoForm of form.data.ctn_00005; let servicoIndex = index">
+
+                    <div class="servico">
+                        <div class="col-2">
+                            <p>Serviço</p>
+                            <p>{{servicoForm.slt_00001.label}}</p>
+                        </div>
+                        <div class="col-2" style="line-height: 1rem;">
+                            <p>Descrição</p>
+                            <p>{{servicoForm.ipt_00001}}</p>
+                        </div>
+                        <div class="col-3">
+                            <p>Arquivo</p>
+
+                            <button (click)="startDownload(form.id, servicoForm.slt_00001.label)"
+                                style="background-color: none; border:none; color:#1235e0">{{servicoForm.cst_00001?.name}}</button>
+
+                            <br>
+
+                        </div>
+
+                        <div class="col-2">
+                            <p>Status</p>
+                            <p class="status" style="font-weight: 500; color: green;">{{servicoForm.slt_00003.label}}
+                            </p>
+
+                        </div>
+
+                        <div class="col-2">
+
+
+                            <p>{{servicoForm.slt_00002?.label}}</p>
+                            <button class="btn-parceiros" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                (click)="filterParceiro(servicoForm.slt_00001.label, formIndex, servicoIndex, form.id)">
+                                +
+                                Selecionar Parceiro</button>
+
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+
+                                            <h5 class="modal-title" id="exampleModalLabel">Escolha um parceiro</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul style="list-style: none;">
+                                                <li *ngFor="let parceiro  of listParceirosFiltro">
+                                                    <button class="btn-filter-parceiros" data-bs-dismiss="modal"
+                                                        (click)="selectParceiro(parceiro)">{{parceiro.data.ipt_00003}}</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <br><br>
+</div>

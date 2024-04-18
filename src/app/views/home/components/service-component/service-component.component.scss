@@ -1,0 +1,178 @@
+.title {
+    h3 {
+        color: var(--details);
+        -webkit-text-stroke: 0.8px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
+
+.services {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    align-content: center;
+}
+
+.card-all-services {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-service {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+    flex-direction: column;
+    width: 310px;
+    height: 330px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #00000036;
+    padding: 25px 25px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+
+    p {
+        font-size: 0.9rem;
+
+        &:nth-of-type(1) {
+            margin-top: 20px;
+        }
+    }
+
+    img {
+        margin-top: 15px;
+        width: 90px;
+    }
+}
+
+
+button {
+    padding: 6px 7px;
+    color: #fff;
+    background-color: var(--bg-blue);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    width: 6rem;
+    text-align: center;
+
+    &:hover {
+        background-color: var(--details);
+        border-color: none;
+    }
+}
+
+// Loader
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+
+.loader {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    border-radius: 10px;
+}
+
+.loader div {
+    width: 8%;
+    height: 24%;
+    background: var(--bg-blue);
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+    border-radius: 50px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    animation: fade458 1s linear infinite;
+}
+
+@keyframes fade458 {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.25;
+    }
+}
+
+.loader .bar1 {
+    transform: rotate(0deg) translate(0, -130%);
+    animation-delay: 0s;
+}
+
+.loader .bar2 {
+    transform: rotate(30deg) translate(0, -130%);
+    animation-delay: -1.1s;
+}
+
+.loader .bar3 {
+    transform: rotate(60deg) translate(0, -130%);
+    animation-delay: -1s;
+}
+
+.loader .bar4 {
+    transform: rotate(90deg) translate(0, -130%);
+    animation-delay: -0.9s;
+}
+
+.loader .bar5 {
+    transform: rotate(120deg) translate(0, -130%);
+    animation-delay: -0.8s;
+}
+
+.loader .bar6 {
+    transform: rotate(150deg) translate(0, -130%);
+    animation-delay: -0.7s;
+}
+
+.loader .bar7 {
+    transform: rotate(180deg) translate(0, -130%);
+    animation-delay: -0.6s;
+}
+
+.loader .bar8 {
+    transform: rotate(210deg) translate(0, -130%);
+    animation-delay: -0.5s;
+}
+
+.loader .bar9 {
+    transform: rotate(240deg) translate(0, -130%);
+    animation-delay: -0.4s;
+}
+
+.loader .bar10 {
+    transform: rotate(270deg) translate(0, -130%);
+    animation-delay: -0.3s;
+}
+
+.loader .bar11 {
+    transform: rotate(300deg) translate(0, -130%);
+    animation-delay: -0.2s;
+}
+
+.loader .bar12 {
+    transform: rotate(330deg) translate(0, -130%);
+    animation-delay: -0.1s;
+}
+
+@media(max-width: 1200px) {
+    .card-all-services {
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}

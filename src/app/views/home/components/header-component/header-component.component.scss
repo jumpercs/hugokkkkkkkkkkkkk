@@ -1,0 +1,152 @@
+.nav-bar {
+    background: linear-gradient(to right, #fff 68%, var(--bg-blue) 37%);
+
+}
+
+.navbar {
+
+    .logo img {
+        width: 150px;
+        cursor: pointer;
+    }
+
+    li {
+        border-bottom: 2px solid transparent;
+        -webkit-text-stroke: #000 0.3px;
+
+        &:hover {
+            -webkit-text-stroke: #000 0.6px;
+            border-bottom: 2px solid var(--details);
+
+        }
+    }
+
+    .login {
+        background-color: #fff;
+        width: 100px;
+        color: #000;
+        -webkit-text-stroke: #000 0.3px;
+        border-radius: 4px;
+
+
+        &:hover {
+            background-color: var(--details);
+            width: 100px;
+            color: #fff;
+            -webkit-text-stroke: #ffffff 0.3px;
+        }
+    }
+
+}
+
+@media (max-width: 998px) {
+    .navbar-toggler {
+        background-color: #fff;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .nav-bar {
+        background: #fff;
+    }
+
+
+}
+
+.sub-menu-wrap {
+    position: absolute;
+    top: 90%;
+    right: 0%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+
+    .sub-menu {
+        background: #fff;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px rgb(0, 0, 0, .1);
+
+
+        hr {
+            border: 0;
+            height: 1px;
+            width: 100%;
+            background: #ccc;
+            margin: 15px 0 10px;
+        }
+
+        .sub-menu-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #525252;
+            border-radius: 3px;
+            margin: 12px 0;
+
+            &:hover {
+                cursor: pointer;
+                color: var(--bg-blue);
+                font-weight: bolder;
+            }
+
+            .text {
+                width: 100%;
+            }
+
+            span {
+                font-size: 12pt;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+
+        }
+
+        .icone {
+
+            i {
+                margin-right: 0.70rem;
+                margin-top: 0.30rem;
+                font-size: 20pt;
+            }
+
+        }
+
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h6 {
+            margin-right: 3rem;
+            margin-top: 10px;
+            font-weight: bolder;
+        }
+    }
+
+}
+
+.sub-menu-wrap.open-menu {
+    max-height: 400px;
+}
+
+form .perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .img-perfil {
+        height: 50px;
+        width: 50px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

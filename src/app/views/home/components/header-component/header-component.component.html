@@ -1,0 +1,132 @@
+<div class="container-fluid nav-bar">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" (click)="redirectToHome()"><img src="assets/logo-h7px.png"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i class='bx bx-menu' style="font-size: 30px;"></i></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav m-auto text-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about-us">Quem Somos?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#service">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="rastreamento">Rastreamento</a>
+                        </li>
+                    </ul>
+
+
+                    <form class="d-flex justify-content-center">
+                        <div class="text-center">
+                            <button class="btn login" (click)="redirectToLogin()" *ngIf="login">Login</button>
+                        </div>
+
+                        <div class="perfil">
+                            <img class="img-perfil" src="/assets/icon-hugo.png" alt="Imagem de Perfil"
+                                (click)="toggleMenu()" *ngIf="isValidUser">
+                        </div>
+
+                        <div class="sub-menu-wrap" id="subMenu">
+                            <div class="sub-menu">
+
+                                <div class="user-info">
+
+                                    <div class="img-portfile">
+                                        <img height="50" width="50" src="/assets/icon-hugo.png" alt="Imagem de Perfil">
+                                    </div>
+
+                                    <div class="name-portfile">
+                                        <h6>Administrador Hugo</h6>
+                                    </div>
+
+                                </div>
+
+                                <hr>
+
+                                <a class="sub-menu-link" href="#gerenciar-servicos">
+
+                                    <div class="icone">
+                                        <i class='bx bx-edit'></i>
+                                    </div>
+
+                                    <div class="text">
+                                        Gerenciar Serviços
+                                    </div>
+
+                                    <span>
+                                        <i class='bx bx-chevron-right'></i>
+                                    </span>
+
+                                </a>
+
+                                <a class="sub-menu-link" href=#gerenciar-parceiros>
+
+                                    <div class="icone">
+                                        <i class='bx bxs-user-detail'></i>
+                                    </div>
+
+                                    <div class="text">
+                                        Gerenciar Parceiros
+                                    </div>
+
+                                    <span>
+                                        <i class='bx bx-chevron-right'></i>
+                                    </span>
+
+                                </a>
+
+
+                                <a class="sub-menu-link" href="#visualizar-formularios" *ngIf="isValidUser">
+
+                                    <div class="icone">
+                                        <i class='bx bxs-file'></i>
+                                    </div>
+
+                                    <div class="text">
+                                        Visualizar Formulários
+                                    </div>
+
+                                    <span>
+                                        <i class='bx bx-chevron-right'></i>
+                                    </span>
+
+                                </a>
+
+                                <a class="sub-menu-link" (click)="logout()">
+                                    <div class="icone">
+                                        <i class='bx bxs-exit'></i>
+                                    </div>
+
+                                    <div class="text">
+                                        Sair
+                                    </div>
+
+                                    <span>
+                                        <i class='bx bx-chevron-right'></i>
+                                    </span>
+                                </a>
+
+
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+.banner {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    height: 15rem;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .overley {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15rem;
+    background: #062a509f;
+}
+
+.banner .overley .container {
+    height: 15rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.banner .overley .container .text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+.banner section {
+    height: 15rem;
+    width: 100%;
+}
+
+.text-content {
+    h3 {
+        -webkit-text-stroke: 0.7px;
+        margin-bottom: 15px;
+    }
+}
+
+section:nth-of-type(1) {
+    background: url('/assets/assessoria-pratica.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+@media Screen and (max-width: 991px) {
+
+    .container .banner .banner-img .bannerOverley {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .container .banner .banner-img .bannerOverley .text {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .banner .overley .container .row .text-content {
+        text-align: center;
+    }
+
+}

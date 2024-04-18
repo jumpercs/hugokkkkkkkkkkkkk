@@ -1,0 +1,241 @@
+.title {
+    .description {
+      height: auto;
+      width: 100%;
+      text-align: left;
+      font-size: 12pt;
+      font-weight: 300;
+    }
+  }
+  
+  .card-search {
+    z-index: 0;
+    background: #fff;
+    height: auto;
+    width: 100%;
+    border: 1px solid rgb(202, 198, 198);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 5px;
+  
+    .identificador {
+      height: 50px;
+      width: 300px;
+      border: 2px solid #062A50;
+      background: #F2F3F4;
+      text-align: center;
+  
+      p {
+        font-size: 11pt;
+        color: #858585;
+        font-weight: bold;
+        margin-top: 12px;
+      }
+    }
+  
+    .content-search {
+      height: auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+  
+      input[type="text"] {
+        height: 50px;
+        width: 80%;
+        margin-right: 10px;
+        border: none;
+        outline: none;
+        background: #F2F3F4;
+        padding: 0rem 0.50rem;
+      }
+  
+  
+      button {
+        height: 50px;
+        width: 200px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background: #062A50;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        &:hover {
+          cursor: pointer;
+        }
+  
+        i {
+          margin-top: 6px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  
+  .inicialize-found {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+    .imagem {
+      img {
+        height: 250px;
+        width: 100%;
+      }
+  
+    }
+  
+  }
+  
+  .loading {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+    span {
+      font-weight: 600;
+      font-size: 12pt;
+      color: #062A50;
+    }
+  
+    .loader {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+    }
+  
+    .loader div {
+      width: 8%;
+      height: 24%;
+      background: #062A50;
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      opacity: 0;
+      border-radius: 50px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      animation: fade458 1s linear infinite;
+    }
+  
+    @keyframes fade458 {
+      from {
+        opacity: 1;
+      }
+  
+      to {
+        opacity: 0.25;
+      }
+    }
+  
+    .loader .bar1 {
+      transform: rotate(0deg) translate(0, -130%);
+      animation-delay: 0s;
+    }
+  
+    .loader .bar2 {
+      transform: rotate(30deg) translate(0, -130%);
+      animation-delay: -1.1s;
+    }
+  
+    .loader .bar3 {
+      transform: rotate(60deg) translate(0, -130%);
+      animation-delay: -1s;
+    }
+  
+    .loader .bar4 {
+      transform: rotate(90deg) translate(0, -130%);
+      animation-delay: -0.9s;
+    }
+  
+    .loader .bar5 {
+      transform: rotate(120deg) translate(0, -130%);
+      animation-delay: -0.8s;
+    }
+  
+    .loader .bar6 {
+      transform: rotate(150deg) translate(0, -130%);
+      animation-delay: -0.7s;
+    }
+  
+    .loader .bar7 {
+      transform: rotate(180deg) translate(0, -130%);
+      animation-delay: -0.6s;
+    }
+  
+    .loader .bar8 {
+      transform: rotate(210deg) translate(0, -130%);
+      animation-delay: -0.5s;
+    }
+  
+    .loader .bar9 {
+      transform: rotate(240deg) translate(0, -130%);
+      animation-delay: -0.4s;
+    }
+  
+    .loader .bar10 {
+      transform: rotate(270deg) translate(0, -130%);
+      animation-delay: -0.3s;
+    }
+  
+    .loader .bar11 {
+      transform: rotate(300deg) translate(0, -130%);
+      animation-delay: -0.2s;
+    }
+  
+    .loader .bar12 {
+      transform: rotate(330deg) translate(0, -130%);
+      animation-delay: -0.1s;
+    }
+  
+  }
+  
+  .card-rastreio {
+  
+    .title {
+      font-size: 14pt;
+      font-weight: 600;
+  
+    }
+  
+    .rastreio-status {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      color: rgb(88, 177, 0);
+      font-weight: bold;
+  
+      .bol {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        margin-right: 10px;
+        background: rgb(88, 177, 0);
+  
+      }
+  
+    }
+  
+  
+  }
+  
+  .content-service {
+    
+    .content-status {
+      color: green;
+      font-weight: 600;
+    }
+  }
